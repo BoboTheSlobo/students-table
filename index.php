@@ -21,7 +21,7 @@
         <?php include('message.php'); ?>
 
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12"> 
                 <div class="card">
                     <div class="card-header">
                         <h4>Student Details
@@ -32,7 +32,7 @@
 
                         <table class="table table-bordered table-striped">
                             <thead>
-                                <tr>
+                                <tr class="text-center">
                                     <th>ID</th>
                                     <th>Image</th>
                                     <th>Name</th>
@@ -57,7 +57,7 @@
                                             <tr>
                                                 <td class="text-center"><?= $student['id']; ?></td>
                                                 <td class="text-center"><img src="<?= $student['image']; ?>" alt="student image"  style="max-width: 100px; max-height: 100px;"></td>
-                                                <td class="text-center"><?= $student['name']; ?></td>
+                                                <td class="text-center "><?= $student['name']; ?></td>
                                                 <td class="text-center"><?= $student['grade']; ?></td>
                                                 <td class="text-center"><?= $student['email']; ?></td>
                                                 <td class="text-center"><?= $student['phone']; ?></td>

@@ -35,26 +35,19 @@ require 'dbcon.php';
                         if(isset($_GET['id']))
                         {
                             $student_id = mysqli_real_escape_string($con, $_GET['id']);
-                            $query = "SELECT * FROM students WHERE id='$student_id' ";
+                            $query = "SELECT *, DATE_FORMAT(dob,'%D %M %Y') AS dob FROM students WHERE id='$student_id' ";
                             $query_run = mysqli_query($con, $query);
 
                             if(mysqli_num_rows($query_run) > 0)
                             {
                                 $student = mysqli_fetch_array($query_run);
                                 ?>
-                                <form action="code.php" method="POST">
+                                <form action="code.php" method="POST" enctype="multipart/form-data">
                                     <input type="hidden" name="student_id" value="<?= $student['id']; ?>">
-                                    <div class="mb-3">
-                                        <label>Student Image</label>
-                                        <input type="file" name="image" value="<?=$student['image'];?>" class="form-control">
-                                    </div>
+
                                     <div class="mb-3">
                                         <label>Student Name</label>
                                         <input type="text" name="name" value="<?=$student['name'];?>" class="form-control">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label>Student Grade</label>
-                                        <input type="number" name="grade" min="1" max="5"  value="<?=$student['grade'];?>" class="form-control">
                                     </div>
                                     <div class="mb-3">
                                         <label>Student Email</label>
@@ -70,10 +63,14 @@ require 'dbcon.php';
                                     </div>
                                     <div class="mb-3">
                                         <label>Date of Birth</label>
-                                        <input type="date" name="dob" value="<?=$student['dob'];?>" class="form-control">
+                                        <input type="date" name="dob" class="form-control">
                                     </div>
                                     <div class="mb-3">
-                                        <button type="submit" name="update_student" class="btn btn-primary">
+                                        <label>Photo Upload</label>
+                                        <input type="file" name="the_file">
+                                    </div>
+                                    <div class="mb-3">
+                                        <button type="submit" name="update_student" class="btn btn-success">
                                             Update Student
                                         </button>
                                     </div>

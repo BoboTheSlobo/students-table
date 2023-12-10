@@ -56,7 +56,7 @@
                                             ?>
                                             <tr>
                                                 <td class="text-center"><?= $student['id']; ?></td>
-                                                <td class="text-center"><img src="<?= $student['image']; ?>" alt="student image"  style="max-width: 100px; max-height: 100px;"></td>
+                                                <td class="text-center rounded-circle"><img src="<?= $student['image']; ?>" alt="student image"  style="max-width: 100px; max-height: 100px;"></td>
                                                 <td class="text-center "><?= $student['name']; ?></td>
                                                 <td class="text-center"><?= $student['grade']; ?></td>
                                                 <td class="text-center"><?= $student['email']; ?></td>
@@ -79,7 +79,7 @@
                                         echo "<h5> No Record Found </h5>";
                                     }
                                 ?>
-                                
+
                             </tbody>
                         </table>
 

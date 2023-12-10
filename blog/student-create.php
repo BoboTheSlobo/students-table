@@ -29,10 +29,10 @@ session_start();
                         </h4>
                     </div>
                     <div class="card-body">
-                        <form action="code.php" method="POST">
+                        <form action="code.php" method="POST" enctype="multipart/form-data">
                         <div class="mb-3">
-                                <label>Student Image</label>
-                                <input type="file" name="image" class="form-control">
+                                <label>Photo Upload</label>
+                                <input type="file" name="the_file">
                             </div>
                             <div class="mb-3">
                                 <label>Student Name</label>

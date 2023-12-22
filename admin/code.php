@@ -1,5 +1,5 @@
 <?php
-session_start();
+ include 'auth_session.php';
 require 'dbcon.php';
 
 if(isset($_POST['delete_student']))
@@ -12,13 +12,13 @@ if(isset($_POST['delete_student']))
     if($query_run)
     {
         $_SESSION['message'] = "Student Deleted Successfully";
-        header("Location: index.php");
+        header("Location: students.php");
         exit(0);
     }
     else
     {
         $_SESSION['message'] = "Student Not Deleted";
-        header("Location: index.php");
+        header("Location: students.php");
         exit(0);
     }
 }
@@ -28,6 +28,7 @@ if(isset($_POST['update_student']))
     $student_id = mysqli_real_escape_string($con, $_POST['student_id']);
 
     $name = mysqli_real_escape_string($con, $_POST['name']);
+    $grade = mysqli_real_escape_string($con, $_POST['grade']);
     $email = mysqli_real_escape_string($con, $_POST['email']);
     $phone = mysqli_real_escape_string($con, $_POST['phone']);
     $course = mysqli_real_escape_string($con, $_POST['course']);
@@ -79,11 +80,11 @@ if(isset($_POST['update_student']))
             }
           }
 
-          $query = "UPDATE students SET name='$name', email='$email', phone='$phone', course='$course', image='$fileName', dob='$dob' WHERE id='$student_id' ";
+          $query = "UPDATE students SET name='$name',grade='$grade', email='$email', phone='$phone', course='$course', image='$fileName', dob='$dob' WHERE id='$student_id' ";
 
     }
     else {
-        $query = "UPDATE students SET name='$name', email='$email', phone='$phone', course='$course', dob='$dob' WHERE id='$student_id' ";
+        $query = "UPDATE students SET name='$name', grade='$grade', email='$email', phone='$phone', course='$course', dob='$dob' WHERE id='$student_id' ";
         //print "Nema Slika";
         //exit(0);
 
@@ -94,13 +95,13 @@ if(isset($_POST['update_student']))
     if($query_run)
     {
         $_SESSION['message'] = "Student Updated Successfully";
-        header("Location: index.php");
+        header("Location: students.php");
         exit(0);
     }
     else
     {
         $_SESSION['message'] = "Student Not Updated";
-        header("Location: index.php");
+        header("Location: students.php");
         exit(0);
     }
 
@@ -111,6 +112,7 @@ if(isset($_POST['save_student']))
 {
 
     $name = mysqli_real_escape_string($con, $_POST['name']);
+    $grade = mysqli_real_escape_string($con, $_POST['grade']);
     $email = mysqli_real_escape_string($con, $_POST['email']);
     $phone = mysqli_real_escape_string($con, $_POST['phone']);
     $course = mysqli_real_escape_string($con, $_POST['course']);
@@ -158,13 +160,13 @@ if(isset($_POST['save_student']))
             }
           }
 
-          $query = "INSERT INTO students (name,email,phone,course,image,dob) VALUES ('$name','$email','$phone','$course','$fileName','$dob')";
+          $query = "INSERT INTO students (name,grade,email,phone,course,image,dob) VALUES ('$name','$grade','$email','$phone','$course','$fileName','$dob')";
 
     
 
     }
     else {
-        $query = "INSERT INTO students (name,email,phone,course,dob) VALUES ('$name','$email','$phone','$course', '$dob')";
+        $query = "INSERT INTO students (name,grade,email,phone,course,dob) VALUES ('$name','$grade','$email','$phone','$course', '$dob')";
         
     }
 

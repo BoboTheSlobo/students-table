@@ -1,0 +1,20 @@
+* {
+  font-family: "Montserrat";
+}
+nav {
+  letter-spacing: -1px;
+}
+h3 {
+  font-weight: normal;
+  text-align: center;
+}
+.user_image {
+  width: 30px;
+  height: 30px;
+}
+.navbar_links_container {
+  width: 100%;
+}
+.dropdown-item:hover {
+  background-color: #007bff !important;
+}

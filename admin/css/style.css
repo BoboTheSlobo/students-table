@@ -1,5 +1,6 @@
 body {
   background: #3e4144;
+  font-family: "Courier New", Courier, monospace;
 }
 .form {
   margin: 50px auto;
@@ -46,7 +47,7 @@ h1.login-title {
 .link a {
   color: #666;
 }
-h3 {
+/* h3 {
   font-weight: normal;
   text-align: center;
 }
@@ -56,4 +57,4 @@ h3 {
 }
 .navbar_links_container {
   width: 100%;
-}
+} */

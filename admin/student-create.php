@@ -1,18 +1,26 @@
 <?php
-   include 'auth_session.php';
+ include 'auth_session.php';
+
+  if(!isset($_SESSION["username"])) {
+      header("Location: login.php");
+      exit();
+  }
 ?>
-<!DOCTYPE html>
-<html>
-<head>
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
     <meta charset="utf-8">
-    <title>Dashboard - Client area</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./css./style.css"/>
+<link rel="stylesheet" href="index.css">
+    <!-- Bootstrap CSS -->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" href="index.css">
+    <title>Student Create</title>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg bg-primary">
@@ -74,70 +82,59 @@
     </div>
   </div>
 </nav>
-<div class="text-center mt-3 p-2"><h2>Welcome <?php
-    // Check if the username is set in the session
-    if (isset($_SESSION['username'])) {
-      echo $_SESSION['username'];
-    }
-    ?>!</h2></div>
-<div class="container mt-5">
-  <div class="row  gap-2 gap-sm-2 gap-md-0 ">
+    <div class="container mt-5">
 
-    <!-- Card 1 -->
-    <div class="col-md-12">
-      <div class="card bg-primary bg-gradient">
-        <div class="card-body pt-4 pb-4">
-          <h2>Student's<?php
-            include 'dbcon.php'; // Include the database connection file
+        <?php include('message.php'); ?>
 
-            $query = "SELECT COUNT(*) as student_count FROM students"; // Count the number of students
-            $result = mysqli_query($con, $query);
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Student Add 
+                            <a href="students.php" class="btn btn-danger float-end">BACK</a>
+                        </h4>
+                    </div>
+                    <div class="card-body">
+                        <form action="code.php" method="POST" enctype="multipart/form-data">
+                        <div class="mb-3">
+                                <label>Photo Upload</label>
+                                <input type="file" name="the_file">
+                            </div>
+                            <div class="mb-3">
+                                <label>Student Name</label>
+                                <input type="text" name="name" class="form-control">
+                            </div>
+                            <div class="mb-3">
+                                <label>Student Grade</label>
+                                <input type="number" name="grade" class="form-control" min="1" max="5">
+                            </div>
+                            <div class="mb-3">
+                                <label>Student Email</label>
+                                <input type="email" name="email" class="form-control">
+                            </div>
+                            <div class="mb-3">
+                                <label>Student Phone</label>
+                                <input type="text" name="phone" class="form-control">
+                            </div>
+                            <div class="mb-3">
+                                <label>Student Course</label>
+                                <input type="text" name="course" class="form-control">
+                            </div>
+                            <div class="mb-3">
+                                <label>Date of Birth</label>
+                                <input type="date" name="dob" class="form-control">
+                            </div>
+                            <div class="mb-3">
+                                <button type="submit" name="save_student" class="btn btn-primary">Save Student</button>
+                            </div>
 
-            if ($result) {
-                $row = mysqli_fetch_assoc($result);
-                $studentCount = $row['student_count'];
-                echo " $studentCount";
-            } else {
-                echo "<p class='card-text'>Error fetching student count</p>";
-            }
-            ?></h2>
-         
-        <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptate, officiis?</p>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-    <!-- Card 2 -->
-    <div class="col-md-4 mt-2">
-      <div class="card bg-success bg-gradient">
-        <div class="card-body p-4">
-        <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptate, officiis?</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Card 3 -->
-    <div class="col-md-4 mt-2">
-      <div class="card bg-primary bg-gradient">
-        <div class="card-body p-4">
-        <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptate, officiis?</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Card 4 -->
-    <div class="col-md-4 mt-2">
-      <div class="card bg-success bg-gradient">
-        <div class="card-body p-4">
-        <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptate, officiis?</p>
-        </div>
-      </div>
     </div>
 
-  </div>
-</div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-<?php
-
-?>
-

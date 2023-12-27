@@ -87,20 +87,21 @@
     <div class="col-md-12">
       <div class="card bg-primary bg-gradient">
         <div class="card-body pt-4 pb-4">
-          <h2>Student's<?php
+        <?php
             include 'dbcon.php'; // Include the database connection file
 
             $query = "SELECT COUNT(*) as student_count FROM students"; // Count the number of students
             $result = mysqli_query($con, $query);
-
-            if ($result) {
-                $row = mysqli_fetch_assoc($result);
-                $studentCount = $row['student_count'];
-                echo " $studentCount";
-            } else {
-                echo "<p class='card-text'>Error fetching student count</p>";
-            }
-            ?></h2>
+            if ($result === false) {
+              echo "Error executing the query: " . $con->error;
+          } else {
+              $row = $result->fetch_assoc();
+              $studentCount = $row['student_count'];
+          }
+          $con->close();
+          ?>
+          <h2 class="card-title">Student <?php echo $studentCount; ?> </h2>
+            </h2>
          
         <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptate, officiis?</p>
         </div>
@@ -132,12 +133,10 @@
         </div>
       </div>
     </div>
-
   </div>
 </div>
 </body>
 </html>
 <?php
-
 ?>
 

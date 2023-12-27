@@ -94,20 +94,8 @@
             </div>
             <div class="card-body table-responsive  border-top border-primary">
             <?php
-                    $query = "SELECT * FROM students";
-                    $query_run = mysqli_query($con, $query);
-
-                    $studentCount = 0; // Initialize the counter
-
-                    if (mysqli_num_rows($query_run) > 0) {
-                        foreach ($query_run as $student) {
-                            $studentCount++; // Increment the counter
-                            ?>
-                            <?php
-                        }
-                    } else {
-                        echo "<h5> No Record Found </h5>";
-                    }
+                   $sql = "SELECT COUNT(id) AS student_count FROM students";
+                   $result = $con->query($sql);
                     ?>
 
               <table class="table table-bordered border-primary table-striped">

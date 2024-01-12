@@ -26,7 +26,6 @@ if(isset($_POST['delete_student']))
 if(isset($_POST['update_student']))
 {
     $student_id = mysqli_real_escape_string($con, $_POST['student_id']);
-
     $name = mysqli_real_escape_string($con, $_POST['name']);
     $grade = mysqli_real_escape_string($con, $_POST['grade']);
     $email = mysqli_real_escape_string($con, $_POST['email']);
@@ -185,4 +184,75 @@ if(isset($_POST['save_student']))
     }
 }
 
-?>
+if(isset($_POST['delete_news']))
+{
+    $news_id = mysqli_real_escape_string($con, $_POST['delete_news']);
+    $query = "DELETE FROM news WHERE id='$news_id' ";
+    $query_run = mysqli_query($con, $query);
+    if($query_run)
+    {
+        $_SESSION['message'] = "News Card Deleted Successfully";
+        header("Location: news.php");
+        exit(0);
+    }
+    else
+    {
+        $_SESSION['message'] = "News Card Not Deleted";
+        header("Location: news.php");
+        exit(0);
+    }
+}
+if (isset($_POST['news_update'])) {
+  $news_id = mysqli_real_escape_string($con, $_POST['news_id']);
+  $Title = mysqli_real_escape_string($con, $_POST['Title']);
+  $Description = mysqli_real_escape_string($con, $_POST['Description']);
+  $Status = mysqli_real_escape_string($con, $_POST['Status']);
+
+  // Check if a new image is being uploaded
+    if(isset($_FILES["Image"]) && $_FILES["Image"]["error"] == 0) {
+        $Image = basename($_FILES["Image"]["name"]);
+        // Specify the target directory for file upload
+        $target_dir = "uploads/";
+        $target_file = $target_dir . $Image;
+        // Move the uploaded file to the target directory
+        if(move_uploaded_file($_FILES["Image"]["tmp_name"], $target_file)) {
+            // Update the database with the new image path
+            $query = "UPDATE news SET Image='uploads/$Image', Title='$Title', Description='$Description', Status='$Status' WHERE id='$news_id'";
+        } else {
+            // Handle file upload error
+            $_SESSION['message'] = "Error uploading file.";
+            header("Location: news.php");
+            exit(0);
+        }
+    } else {
+        // If no new image is uploaded, update other fields only
+        $query = "UPDATE news SET Title='$Title', Description='$Description', Status='$Status' WHERE id='$news_id'";
+    }
+    // Execute the query
+    $query_run = mysqli_query($con, $query);
+    if($query_run)
+    {
+        $_SESSION['message'] = "News Updated Successfully";
+        header("Location: news.php");
+        exit(0);
+    }
+    else
+    {
+        $_SESSION['message'] = "News Not Updated";
+        header("Location: news.php");
+        exit(0);
+    }
+
+
+  $query_run = mysqli_query($con, $query);
+
+  if ($query_run) {
+      $_SESSION['message'] = "News Updated Successfully";
+      header("Location: news.php");
+      exit(0);
+  } else {
+      $_SESSION['message'] = "News Not Updated";
+      header("Location: news.php");
+      exit(0);
+  }
+} 

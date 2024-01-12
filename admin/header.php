@@ -17,7 +17,7 @@
             More
           </a>
           <ul class="dropdown-menu bg-primary">
-            <li><a class="dropdown-item text-white" href="#first-service">Blog</a></li>
+            <li><a class="dropdown-item text-white" href="news.php">News</a></li>
             <li><a class="dropdown-item text-white" href="#second-service">Contact</a></li>
           </ul>
         </li>

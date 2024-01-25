@@ -19,10 +19,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $uploadOk = 0;
     }
     // Check file size (optional)
-    if ($_FILES["Image"]["size"] > 500000) {
-        echo "Sorry, your file is too large.";
-        $uploadOk = 0;
-    }
+    // if ($_FILES["Image"]["size"] > 500000) {
+    //     echo "Sorry, your file is too large.";
+    //     $uploadOk = 0;
+    // }
     // Allow certain file formats
     if ($ImageFileType != "jpg" && $ImageFileType != "png" && $ImageFileType != "jpeg" && $ImageFileType != "gif") {
         echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";

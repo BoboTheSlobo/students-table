@@ -18,20 +18,11 @@
           </a>
           <ul class="dropdown-menu bg-primary">
             <li><a class="dropdown-item text-white" href="news.php">News</a></li>
-            <li><a class="dropdown-item text-white" href="#second-service">Contact</a></li>
+            <li><a class="dropdown-item text-white" href="university.php">University API</a></li>
           </ul>
         </li>
         <li class="nav-item ms-lg-3">
-        <form class="form-inline m-0">
-    <div class="input-group">
-      <input type="text" class="form-control rounded  outline-0 " placeholder="Search by Name" aria-label="Search" aria-describedby="basic-addon2">
-      <div class="input-group-append bg-white ms-1 rounded">
-        <button class="btn btn-outline-secondary  border-0 p-3" type="button">
-          <i class="bi bi-search text-primary"></i>
-          </button>
-      </div>
-    </div>
-  </form>
+        
        </li>
        <li class="nav-item ms-lg-auto">
          <div class="align-items-center ps-lg-3">

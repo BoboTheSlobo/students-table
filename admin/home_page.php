@@ -58,13 +58,13 @@ require 'dbcon.php';
         while ($status_news = mysqli_fetch_assoc($status_query_run)) {
             ?>
             <div class="col-12 col-md-6 col-lg-3 mb-4">
-                <div class="card">
+                <div class="card border-dark">
                     <img src="<?= $status_news['Image']; ?>" class="card-img-top" alt="news image">
                     <div class="card-body">
                         <h5 class="card-title"><?= $status_news['Title']; ?></h5>
                         <p class="card-text"><?php echo substr($status_news['Description'], 0, 50); ?>...</p>
                         <!-- Button to Open Modal -->
-                        <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#myModal<?= $status_news['id']; ?>">
+                        <button class="btn btn-dark" type="button" data-bs-toggle="modal" data-bs-target="#myModal<?= $status_news['id']; ?>">
                             View Details
                         </button>
                     </div>

@@ -257,7 +257,7 @@ if (isset($_POST['news_update'])) {
   }
 } 
 
-
+  
 $curl = curl_init();
 curl_setopt_array($curl, array(
     CURLOPT_URL => 'http://universities.hipolabs.com/search?country=United+States',
